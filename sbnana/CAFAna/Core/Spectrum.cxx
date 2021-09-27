@@ -191,6 +191,20 @@ namespace ana
     loader.AddSpectrum(*this, multiDVar, spillcut, cut, shift, wei);
   }
 
+
+  //----------------------------------------------------------------------
+  Spectrum::Spectrum(const std::string& xLabel, const std::string& yLabel,
+                     SpectrumLoaderBase& loader,
+                     const Binning& binsx, const SpillVar& varx,
+                     const Binning& binsy, const SpillVar& vary,
+                     const SpillCut& spillcut)
+    : Spectrum({xLabel, yLabel}, {binsx, binsy})
+  {
+    SpillVar multiDVar = Var2D(varx, binsx, vary, binsy);
+
+    loader.AddSpectrum(*this, multiDVar, spillcut);
+  }
+
   //----------------------------------------------------------------------
   Spectrum::Spectrum(const std::string& label, SpectrumLoaderBase& loader,
                      const Binning& binsx, const Var& varx,

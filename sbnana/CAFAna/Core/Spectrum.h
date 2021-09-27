@@ -114,6 +114,12 @@ namespace ana
              const Cut& cut,
              const SystShifts& shift = kNoShift,
              const Var& wei = kUnweighted);
+    
+    Spectrum(const std::string& xLabel, const std::string& yLabel,
+             SpectrumLoaderBase& loader,
+             const Binning& binsx, const SpillVar& varx,
+             const Binning& binsy, const SpillVar& vary,
+             const SpillCut& spillcut);
 
     /// 2D Spectrum taking 2 HistAxis
     Spectrum(SpectrumLoaderBase& loader,
